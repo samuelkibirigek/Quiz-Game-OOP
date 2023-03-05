@@ -8,6 +8,7 @@ class Quiz:
         self.qsn_number = 1
         self.user_answer = ""
         self.score = 0
+        self.game_is_on = True
 
     def question(self):
         qsn = self.quiz_list[self.qsn_position]
@@ -20,9 +21,18 @@ class Quiz:
         if user_ans.lower() == answer.lower():
             self.score += 1
             print("That's correct.")
-            print(f"Your current score is: ")
-            print(answer)
+            print(f"The correct answer was: {answer}")
+            print(f"Your current score is: {self.score}/{self.qsn_number}")
+            self.qsn_number += 1
         else:
-            print("answer is wrong")
-            print(user_ans)
-            print(answer)
+            print("That's wrong.")
+            print(f"The correct answer was: {answer}")
+            print(f"Your current score is: {self.score}/{self.qsn_number}")
+            self.qsn_number += 1
+
+    def play_game(self):
+        if self.qsn_number > 12:
+            self.game_is_on = False
+        else:
+            pass
+
